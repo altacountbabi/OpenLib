@@ -97,7 +97,7 @@ client = {
             end
 
             if max_tokens >= 4097 then
-                error('OpenLib Error: Chat completion (text-davinci-003 or gpt-3.5-turbo) only supports up to 4097 tokens, please lower your max token limit, keep in mind that the prompt counts twoards the token limit too!')
+                error('OpenLib Error: Chat completion only supports up to 4097 tokens, please lower your max token limit, keep in mind that the prompt counts twoards the token limit too!')
                 return
             end
 
@@ -111,13 +111,13 @@ client = {
             end
 
             if not supportedModel then
-                error('OpenLib Error: Chat Completion doesnt support the "' .. model .. '" model. Please check the documentation for what models are available on chat completion: https://dosware.net/openlib')
+                error('OpenLib Error: Chat Completion doesnt support the "' .. model .. '" model. Please check the documentation for what models are available on chat completion: https://whoman.gitbook.io/openlib-documentation/chat-completion')
             end
 
 
             for _,v in next, messages do
                 if not v.role and not v.content then
-                    error('OpenLib Error: Chat Completion (text-davinci-003 or gpt-3.5-turbo) messages must be a table with tables that have the following properties in them: role, content, check the documentation for more details: https://dosware.net/openlib')
+                    error('OpenLib Error: Chat Completion messages must be a table with tables that have the following properties in them: role, content, check the documentation for more details: https://whoman.gitbook.io/openlib-documentation/chat-completion')
                 end
             end
 
@@ -168,7 +168,7 @@ OpenLib = {
         elseif type(api_key) == 'string' then
             client.options.api_key = api_key
             if type(api_base) ~= 'nil' and type(api_base) ~= 'string' then
-                error('OpenLib Error: api_base has to be a string or left as default, please check the api_base variable and the OpenLib docs: https://dosware.net/openlib')
+                error('OpenLib Error: api_base has to be a string or left as default, please check the api_base variable and the OpenLib docs: https://whoman.gitbook.io/openlib-documentation/')
                 return
             else
                 if reset_ip == true and api_base == 'https://api.pawan.krd/v1' then
@@ -185,7 +185,7 @@ OpenLib = {
                 return client.functions
             end
         else
-            error('OpenLib Error: Unkown error, please check the docs and make sure that you initialized OpenLib correctly: https://dosware.net/openlib')
+            error('OpenLib Error: Unkown error, please check the docs and make sure that you initialized OpenLib correctly: https://whoman.gitbook.io/openlib-documentation/')
         end
     end
 }
